@@ -9,6 +9,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+
 const getBooks = (request, response) => {
   pool.query('SELECT * FROM books', (error, results) => {
     if (error) {
